@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Suspense } from 'react';
-import ContactsPage from 'pages/ContactsPage/ContactsPage';
-import HomePage from 'pages/HomePage/HomePage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
+import { Suspense, lazy } from 'react';
 import { Layout, Loader } from 'components';
+
+const HomePage = lazy(() => import('pages/HomePage/HomePage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
 
 export const App = () => {
   return (
