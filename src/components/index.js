@@ -5,3 +5,4 @@ export { Filter } from './Filter/Filter.jsx';
 export { Loader } from './Loader/Loader.jsx';
 export { ErrorMessage } from './Error/Error.jsx';
 export { UserMenu } from './UserMenu/UserMenu.jsx';
+export { Layout } from './Layout/Layout.jsx';
