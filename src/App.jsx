@@ -1,13 +1,22 @@
-import { ContactForm, ContactList, Filter } from 'components';
+import { Loader } from 'components';
+import { ContactsPage, HomePage, LoginPage, RegisterPage } from 'pages';
+import { Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 export const App = () => {
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </div>
+    // <Layout>
+    <Suspense fallback={<Loader />}>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Suspense>
+    // </Layout>
   );
 };
+
+
