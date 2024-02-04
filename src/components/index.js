@@ -6,3 +6,5 @@ export { Loader } from './Loader/Loader.jsx';
 export { ErrorMessage } from './Error/Error.jsx';
 export { UserMenu } from './UserMenu/UserMenu.jsx';
 export { Layout } from './Layout/Layout.jsx';
+export { Navigation } from './Navigation/Navigation.jsx';
+export { ContactUs } from './ContactUs/ContactUs.jsx';
