@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { apiAddContact, apiDeleteContact, apiGetContacts } from './operations';
 
 const initialState = {
@@ -20,22 +20,22 @@ const contactsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(apiGetContacts.pending, (state, action) => {
-        state.contacts.isLoading = true;
-        state.contacts.error = null;
-      })
+      // .addCase(apiGetContacts.pending, (state, action) => {
+      //   state.contacts.isLoading = true;
+      //   state.contacts.error = null;
+      // })
       .addCase(apiGetContacts.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
         state.contacts.items = action.payload;
       })
-      .addCase(apiGetContacts.rejected, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = action.payload;
-      })
-      .addCase(apiDeleteContact.pending, (state, action) => {
-        state.contacts.isLoading = true;
-        state.contacts.error = null;
-      })
+      // .addCase(apiGetContacts.rejected, (state, action) => {
+      //   state.contacts.isLoading = false;
+      //   state.contacts.error = action.payload;
+      // })
+      // .addCase(apiDeleteContact.pending, (state, action) => {
+      //   state.contacts.isLoading = true;
+      //   state.contacts.error = null;
+      // })
       .addCase(apiDeleteContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
         const contactId = action.payload;
@@ -43,23 +43,45 @@ const contactsSlice = createSlice({
           contact => contact.id !== contactId
         );
       })
-      .addCase(apiDeleteContact.rejected, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = action.payload;
-      })
-      .addCase(apiAddContact.pending, (state, action) => {
-        state.contacts.isLoading = true;
-        state.contacts.error = null;
-      })
+      // .addCase(apiDeleteContact.rejected, (state, action) => {
+      //   state.contacts.isLoading = false;
+      //   state.contacts.error = action.payload;
+      // })
+      // .addCase(apiAddContact.pending, (state, action) => {
+      //   state.contacts.isLoading = true;
+      //   state.contacts.error = null;
+      // })
       .addCase(apiAddContact.fulfilled, (state, action) => {
         state.contacts.isLoading = false;
         const newContact = action.payload;
         state.contacts.items = [...state.contacts.items, newContact];
       })
-      .addCase(apiAddContact.rejected, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = action.payload;
-      });
+      // .addCase(apiAddContact.rejected, (state, action) => {
+      //   state.contacts.isLoading = false;
+      //   state.contacts.error = action.payload;
+      // })
+      .addMatcher(
+        isAnyOf(
+          apiGetContacts.pending,
+          apiDeleteContact.pending,
+          apiAddContact.pending
+        ),
+        state => {
+          state.contacts.isLoading = true;
+          state.contacts.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          apiGetContacts.rejected,
+          apiDeleteContact.rejected,
+          apiAddContact.rejected
+        ),
+        (state, action) => {
+          state.contacts.isLoading = false;
+          state.contacts.error = action.payload;
+        }
+      );
   },
 });
 
