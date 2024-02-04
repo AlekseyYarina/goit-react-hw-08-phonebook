@@ -3,7 +3,12 @@ import {
   requestAddContact,
   requestContacts,
   requestDeleteContact,
-} from 'servises/apiContacts';
+} from 'servises/api';
+// import {
+//   requestAddContact,
+//   requestContacts,
+//   requestDeleteContact,
+// } from '../../servises/api.js';
 
 export const apiGetContacts = createAsyncThunk(
   'contacts/apiGetContacts',

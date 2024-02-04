@@ -24,6 +24,7 @@ export const ContactList = () => {
 
   const getFilteredContacts = () => {
     const filterValue = filter || '';
+    console.log(contacts);
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterValue.trim().toLowerCase())
     );
