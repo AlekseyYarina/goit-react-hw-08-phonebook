@@ -21,9 +21,7 @@ export const apiLoginUser = createAsyncThunk(
   'auth/apiLoginUser',
   async (formData, thunkApi) => {
     try {
-      const user = await requestLoginUser(formData);
-
-      return user;
+      return await requestLoginUser(formData);
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -34,7 +32,7 @@ export const apiLogoutUser = createAsyncThunk(
   'auth/apiLogoutUser',
   async (_, thunkApi) => {
     try {
-      await requestapiLogoutUser;
+      await requestapiLogoutUser();
       return;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

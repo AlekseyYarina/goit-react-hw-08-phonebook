@@ -27,7 +27,7 @@ export const requestLoginUser = async formData => {
   try {
     const { data } = await instance.post('/users/login', formData);
     setAuthToken(data.token);
-    return data.user;
+    return data;
   } catch (error) {
     console.error('Error fetching contacts:', error);
     throw error;
