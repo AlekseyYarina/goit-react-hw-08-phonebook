@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { apiRegisterUser } from 'redux-state/auth/authSlice';
+import { apiRegisterUser } from 'redux-state/auth/authOperations';
+// import { apiRegisterUser } from 'redux-state/auth/authSlice';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();

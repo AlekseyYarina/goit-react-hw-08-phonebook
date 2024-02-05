@@ -1,11 +1,12 @@
 import React from 'react';
 import css from './UserMenu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { apiLogoutUser } from 'redux-state/auth/authSlice';
+// import { apiLogoutUser } from 'redux-state/auth/authSlice';
 import {
   selectAuthIsLoading,
   selectAuthUserData,
 } from 'redux-state/auth/authSelectors';
+import { apiLogoutUser } from 'redux-state/auth/authOperations';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();

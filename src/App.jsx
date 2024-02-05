@@ -2,7 +2,8 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy, useEffect } from 'react';
 import { Layout, Loader, PrivateRoute, RestrictedRoute } from 'components';
 import { useDispatch } from 'react-redux';
-import { apiRefreshUser } from 'redux-state/auth/authSlice';
+import { apiRefreshUser } from 'redux-state/auth/authOperations';
+// import { apiRefreshUser } from 'redux-state/auth/authSlice';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage/ContactsPage'));

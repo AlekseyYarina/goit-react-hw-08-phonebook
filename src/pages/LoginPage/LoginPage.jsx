@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { apiLoginUser } from 'redux-state/auth/authSlice';
+import { apiLoginUser } from 'redux-state/auth/authOperations';
+// import { apiLoginUser } from 'redux-state/auth/authSlice';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
