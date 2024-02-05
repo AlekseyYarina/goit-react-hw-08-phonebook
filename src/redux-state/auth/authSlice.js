@@ -106,7 +106,8 @@ const authSlice = createSlice({
         isAnyOf(
           apiRegisterUser.pending,
           apiLoginUser.pending,
-          apiRefreshUser.pending
+          apiRefreshUser.pending,
+          apiLoginUser.pending
         ),
         state => {
           state.isLoading = true;
@@ -117,7 +118,8 @@ const authSlice = createSlice({
         isAnyOf(
           apiRegisterUser.rejected,
           apiLoginUser.rejected,
-          apiRefreshUser.rejected
+          apiRefreshUser.rejected,
+          apiLoginUser.pending
         ),
         (state, action) => {
           state.isLoading = false;
