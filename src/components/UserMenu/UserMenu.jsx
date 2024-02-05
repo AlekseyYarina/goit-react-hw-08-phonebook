@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './UserMenu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-// import { apiLogoutUser } from 'redux-state/auth/authSlice';
+
 import {
   selectAuthIsLoading,
   selectAuthUserData,
