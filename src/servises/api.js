@@ -1,45 +1,17 @@
-// import axios from 'axios';
-
-// export const instance = axios.create({
-//   baseURL: 'https://connections-api.herokuapp.com/',
-// });
-
-// const setToken = token => {
-//   instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
-
-// export const requestRegisterUser = async formData => {
-//   try {
-//     const { data } = await instance.get('/users/signup', formData);
-//     setToken(data.token);
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching contacts:', error);
-//     throw error;
-//   }
-// };
-
-// export const requestLoginUser = async formData => {
-//   try {
-//     const { data } = await instance.get('/users/login', formData);
-//     setToken(data.token);
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching contacts:', error);
-//     throw error;
-//   }
-// };
-//================================================================
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: `https://65ba4abcb4d53c06655280d8.mockapi.io/contacts`,
+  baseURL: 'https://connections-api.herokuapp.com',
 });
 
-export const requestContacts = async () => {
-  try {
-    const { data } = await instance.get('/contacts');
+const setAuthToken = token => {
+  instance.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
+export const requestContacts = async token => {
+  try {
+    setAuthToken(token);
+    const { data } = await instance.get('/contacts');
     return data;
   } catch (error) {
     console.error('Error fetching contacts:', error);
@@ -47,7 +19,8 @@ export const requestContacts = async () => {
   }
 };
 
-export const requestDeleteContact = async contactId => {
+export const requestDeleteContact = async (token, contactId) => {
+  setAuthToken(token);
   try {
     await instance.delete(`/contacts/${contactId}`);
     return contactId;
@@ -57,7 +30,8 @@ export const requestDeleteContact = async contactId => {
   }
 };
 
-export const requestAddContact = async formData => {
+export const requestAddContact = async (token, formData) => {
+  setAuthToken(token);
   try {
     const { data } = await instance.post('/contacts', formData);
     return data;

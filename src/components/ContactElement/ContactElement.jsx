@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import css from './ContactElement.module.css';
 import { apiDeleteContact } from 'redux-state/contacts/operations';
 
-export const ContactElement = ({ id, name, phone }) => {
+export const ContactElement = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const handleDeleteContact = async () => {
@@ -17,7 +17,7 @@ export const ContactElement = ({ id, name, phone }) => {
   return (
     <li className={css.contactElement}>
       <p>
-        &#8226; {name}: {phone}
+        &#8226; {name}: {number}
       </p>
       <button type="button" onClick={handleDeleteContact}>
         Delete

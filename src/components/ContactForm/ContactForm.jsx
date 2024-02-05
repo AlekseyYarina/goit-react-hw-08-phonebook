@@ -10,10 +10,10 @@ export const ContactForm = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
     const name = e.currentTarget.elements.name.value;
-    const phone = e.currentTarget.elements.phone.value;
+    const number = e.currentTarget.elements.phone.value;
     const formData = {
       name,
-      phone,
+      number,
     };
     const hasDuplicates = contacts.some(
       contact => contact.name === formData.name
