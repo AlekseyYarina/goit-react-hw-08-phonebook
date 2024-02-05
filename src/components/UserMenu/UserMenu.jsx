@@ -1,5 +1,5 @@
 import React from 'react';
-import css from './UserMenu.module.css';
+import { Box, Button, Text } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -14,17 +14,16 @@ export const UserMenu = () => {
   const isLoading = useSelector(selectAuthIsLoading);
 
   const userName = userData?.name ?? "Couldn't get user name";
-  console.log(userName);
   const handleLogoutUser = () => {
     dispatch(apiLogoutUser());
   };
 
   return (
-    <div className={css.userMenu}>
-      <p>{userName}</p>
-      <button onClick={handleLogoutUser} disabled={isLoading} type="button">
+    <Box className="user-menu" display="flex" alignItems="center">
+      <Text marginRight="4">{userName}</Text>
+      <Button onClick={handleLogoutUser} isLoading={isLoading} type="button">
         Logout
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };

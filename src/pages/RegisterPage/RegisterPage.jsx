@@ -1,5 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Input,
+  Container,
+} from '@chakra-ui/react';
 import { apiRegisterUser } from 'redux-state/auth/authOperations';
 
 const RegisterPage = () => {
@@ -17,35 +25,38 @@ const RegisterPage = () => {
     dispatch(apiRegisterUser(formData));
   };
   return (
-    <div>
-      <h1>RegisterPage</h1>
-      <form onSubmit={onSubmit}>
-        <label>
-          Name:
-          <input type="text" name="userName" placeholder="Ivan" required />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="userEmail"
-            placeholder="Ivan777@example.com"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            name="userPassword"
-            placeholder="********"
-            minLength={8}
-            required
-          />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
+    <Container maxW="400px" mt="15" mb="20">
+      <Box p="6" boxShadow="lg" rounded="md" bg="white">
+        <form onSubmit={onSubmit}>
+          <FormControl mb="4">
+            <FormLabel>Name</FormLabel>
+            <Input type="text" name="userName" placeholder="Ivan" required />
+          </FormControl>
+          <FormControl mb="4">
+            <FormLabel>Email</FormLabel>
+            <Input
+              type="email"
+              name="userEmail"
+              placeholder="Ivan777@example.com"
+              required
+            />
+          </FormControl>
+          <FormControl mb="4">
+            <FormLabel>Password</FormLabel>
+            <Input
+              type="password"
+              name="userPassword"
+              placeholder="********"
+              minLength={4}
+              required
+            />
+          </FormControl>
+          <Button type="submit" colorScheme="teal">
+            Sign Up
+          </Button>
+        </form>
+      </Box>
+    </Container>
   );
 };
 

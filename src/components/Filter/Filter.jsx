@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Input, Text } from '@chakra-ui/react';
 import { setFilter } from 'redux-state/contacts/contactsSlice';
 import { selectFilter } from 'redux-state/contacts/selectors';
-import css from './Filter.module.css';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -14,15 +14,20 @@ export const Filter = () => {
   };
 
   return (
-    <div className={css.filter}>
-      <p>Find contact by name:</p>
-      <input
+    <Box p="4" bg="gray.100" borderRadius="md" boxShadow="md" mb="4">
+      <Text fontSize="md" mb="2">
+        Find contact by name:
+      </Text>
+      <Input
         value={filter}
         onChange={handleChangeFilter}
         type="text"
         name="keyword"
         placeholder="Ivan..."
+        bg="white"
+        borderColor="gray.300"
+        borderRadius="md"
       />
-    </div>
+    </Box>
   );
 };

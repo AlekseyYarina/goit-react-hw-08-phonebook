@@ -1,52 +1,54 @@
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Flex, Link, Button } from '@chakra-ui/react';
 import css from './Navigation.module.css';
 import { useSelector } from 'react-redux';
 import { selectAuthIsLoggedIn } from 'redux-state/auth/authSelectors';
 
 export const Navigation = () => {
+  const location = useLocation();
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
+
+  const getLinkStyles = isActive => ({
+    mx: '2',
+    p: '2',
+    className: `${css.navlink} ${isActive ? css.active : ''}`,
+  });
   return (
-    <div>
-      <NavLink
-        className={({ isActive }) =>
-          `${css.navlink} ${isActive ? css.active : ''}`
-        }
+    <Flex>
+      <Link
+        as={RouterLink}
         to="/"
+        {...getLinkStyles(location.pathname === '/')}
       >
-        Home
-      </NavLink>
+        <Button size="md">Home</Button>
+      </Link>
       {isLoggedIn ? (
-        <>
-          <NavLink
-            className={({ isActive }) =>
-              `${css.navlink} ${isActive ? css.active : ''}`
-            }
-            to="/contacts"
-          >
-            Contacts
-          </NavLink>
-        </>
+        <Link
+          as={RouterLink}
+          to="/contacts"
+          {...getLinkStyles(location.pathname === '/contacts')}
+        >
+          <Button size="md">Contacts</Button>
+        </Link>
       ) : (
         <>
-          {' '}
-          <NavLink
-            className={({ isActive }) =>
-              `${css.navlink} ${isActive ? css.active : ''}`
-            }
+          <Link
+            as={RouterLink}
             to="/register"
+            {...getLinkStyles(location.pathname === '/register')}
           >
-            Register
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `${css.navlink} ${isActive ? css.active : ''}`
-            }
+            <Button size="md">Register</Button>
+          </Link>
+          <Link
+            as={RouterLink}
             to="/login"
+            {...getLinkStyles(location.pathname === '/login')}
           >
-            Login
-          </NavLink>
+            <Button size="md">Login</Button>
+          </Link>
         </>
       )}
-    </div>
+    </Flex>
   );
 };

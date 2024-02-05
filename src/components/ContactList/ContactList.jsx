@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ContactElement, ErrorMessage, Loader } from 'components';
-import css from './ContactList.module.css';
+import { Box, UnorderedList, ListItem } from '@chakra-ui/react';
 import {
   selectContacts,
   selectError,
@@ -32,21 +32,22 @@ export const ContactList = () => {
   const filteredContacts = getFilteredContacts();
 
   return (
-    <div>
+    <Box p="4" mb="50">
       {isLoading && <Loader />}
       {error && <ErrorMessage error={error} />}
       {!error && (
-        <ul className={css.contacts}>
+        <UnorderedList listStyleType="none">
           {filteredContacts.map(contact => (
-            <ContactElement
-              key={contact.id}
-              id={contact.id}
-              name={contact.name}
-              number={contact.number}
-            />
+            <ListItem key={contact.id} mb="3">
+              <ContactElement
+                id={contact.id}
+                name={contact.name}
+                number={contact.number}
+              />
+            </ListItem>
           ))}
-        </ul>
+        </UnorderedList>
       )}
-    </div>
+    </Box>
   );
 };

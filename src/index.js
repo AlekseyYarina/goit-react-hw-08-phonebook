@@ -11,12 +11,29 @@ import './index.css';
 
 const theme = extendTheme({
   colors: {
-    primary: '#2ecc71',
-    secondary: '#3498db',
+    gray: {
+      200: '#E2E8F0',
+    },
+    cyan: {
+      100: '#C4F1F9',
+      400: '#0BC5EA',
+    },
   },
   fonts: {
-    body: 'Arial, sans-serif',
-    heading: 'Georgia, serif',
+    body: 'YourSansSerifFont, sans-serif',
+    heading: 'YourSansSerifFont, sans-serif',
+  },
+  fontSizes: {
+    sm: '14px',
+    md: '18px',
+    lg: '24px',
+    xl: '36px',
+  },
+  radii: {
+    md: '8px',
+  },
+  shadows: {
+    md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
   },
 });
 
