@@ -12,7 +12,12 @@ export const Loader = () => {
         color="#d81b60"
         ariaLabel="tail-spin-loading"
         radius="1"
-        wrapperStyle={{}}
+        wrapperStyle={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
         wrapperClass=""
       />
     </div>

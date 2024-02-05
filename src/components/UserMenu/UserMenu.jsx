@@ -13,8 +13,8 @@ export const UserMenu = () => {
   const userData = useSelector(selectAuthUserData);
   const isLoading = useSelector(selectAuthIsLoading);
 
-  const userName = userData?.name ?? "Coudn't get user name";
-
+  const userName = userData?.name ?? "Couldn't get user name";
+  console.log(userName);
   const handleLogoutUser = () => {
     dispatch(apiLogoutUser());
   };
