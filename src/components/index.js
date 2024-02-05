@@ -8,3 +8,5 @@ export { UserMenu } from './UserMenu/UserMenu.jsx';
 export { Layout } from './Layout/Layout.jsx';
 export { Navigation } from './Navigation/Navigation.jsx';
 export { ContactUs } from './ContactUs/ContactUs.jsx';
+export { default as RestrictedRoute } from './RestrictedRoute/RestrictedRoute.jsx';
+export { default as PrivateRoute } from './PrivateRoute/PrivateRoute.jsx';
