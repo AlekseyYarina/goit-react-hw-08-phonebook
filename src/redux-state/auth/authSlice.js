@@ -37,8 +37,7 @@ const authSlice = createSlice({
       .addCase(apiRefreshUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.userData = action.payload.user;
-        state.token = action.payload.token;
+        state.userData = action.payload;
       })
 
       .addMatcher(
